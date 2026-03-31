@@ -74,7 +74,7 @@ if [[ "${MAYBE_STATIC_LIB}" != "" ]]; then
     echo "Symlinking ${STATIC_LIB} to ${LIB_OF_INTEREST_UNDERSCORE}.a"
     ln -snf "${STATIC_LIB}" "${LIB_OF_INTEREST_UNDERSCORE}.a"
 else
-    echo "Could not find static lib that might correspond to $1, is there a typo in the lib name?"
+    echo "Could not find static lib that might correspond to  $1 ${LIB_OF_INTEREST_UNDERSCORE}, is there a typo in the lib name?"
 fi
 
 DYNAMIC_LIB_EXT="so"
@@ -91,5 +91,5 @@ if [[ "${MAYBE_DYNAMIC_LIB}" != "" ]]; then
     echo "Symlinking ${DYNAMIC_LIB} to ${LIB_OF_INTEREST_UNDERSCORE}.${DYNAMIC_LIB_EXT}"
     ln -snf "${DYNAMIC_LIB}" "${LIB_OF_INTEREST_UNDERSCORE}.${DYNAMIC_LIB_EXT}"
 else
-    echo "Could not find dynamic lib that might correspond to $1, is there a typo in the lib name?"
+    echo "Could not find dynamic lib that might correspond to  $1 ${LIB_OF_INTEREST_UNDERSCORE}, is there a typo in the lib name?"
 fi
