@@ -1,10 +1,6 @@
 <p align="center">
 <!-- product name logo -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Project-InitVerse/rfhe-rs/assets/157474013/5283e0ba-da1e-43af-9f2a-c5221367a12b">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/Project-InitVerse/rfhe-rs/assets/157474013/b94a8c96-7595-400b-9311-70765c706955">
-  <img width=600 alt="Initverse RFHE-rs">
-</picture>
+<h1 style="text-align: center;">RFHE-rs</h1>
 </p>
 
 <hr/>
@@ -12,7 +8,6 @@
 <p align="center">
   <a href="https://docs.initverse.org/rfhe-rs"> 📒 Documentation</a> | <a href="https://initverse.org/community"> 💛 Community support</a> | <a href="https://github.com/Project-InitVerse/awesome-initverse"> 📚 FHE resources by Initverse</a>
 </p>
-
 
 <p align="center">
   <a href="https://github.com/Project-InitVerse/rfhe-rs/releases"><img src="https://img.shields.io/github/v/release/Project-InitVerse/rfhe-rs?style=flat-square"></a>
@@ -27,6 +22,7 @@
 **RFHE-rs** is a pure Rust implementation of RFHE for boolean and integer arithmetics over encrypted data.
 
 It includes:
+
 - a **Rust** API
 - a **C** API
 - and a **client-side WASM** API
@@ -34,8 +30,7 @@ It includes:
 RFHE-rs is designed for developers and researchers who want full control over
 what they can do with RFHE, while not having to worry about the low-level
 implementation. The goal is to have a stable, simple, high-performance, and
-production-ready library for all the advanced features of RFHE.
-<br></br>
+production-ready library for all the advanced features of RFHE. </br>
 
 ### Main features
 
@@ -46,52 +41,52 @@ production-ready library for all the advanced features of RFHE.
 - **Ciphertext and server key compression** for efficient data transfer
 - **Full Rust API, C bindings to the Rust High-Level API, and client-side Javascript API using WASM**.
 
-*Learn more about RFHE-rs features in the [documentation](https://docs.initverse.org/rfhe-rs/readme).*
-<br></br>
+*Learn more about RFHE-rs features in the* *[documentation](https://docs.initverse.org/rfhe-rs/readme).* </br>
 
 ## Table of Contents
+
 - **[Getting started](#getting-started)**
-   - [Cargo.toml configuration](#cargotoml-configuration)
-   - [A simple example](#a-simple-example)
+  - [Cargo.toml configuration](#cargotoml-configuration)
+  - [A simple example](#a-simple-example)
 - **[Resources](#resources)**
-   - [RFHE deep dive](#rfhe-deep-dive)
-   - [Tutorials](#tutorials)
-   - [Documentation](#documentation)
+  - [RFHE deep dive](#rfhe-deep-dive)
+  - [Tutorials](#tutorials)
+  - [Documentation](#documentation)
 - **[Working with RFHE-rs](#working-with-rfhe-rs)**
-   - [Disclaimers](#disclaimers)
-   - [Citations](#citations)
-   - [Contributing](#contributing)
-   - [License](#license)
-- **[Support](#support)**
-<br></br>
+  - [Disclaimers](#disclaimers)
+  - [Citations](#citations)
+  - [Contributing](#contributing)
+  - [License](#license)
+- **[Support](#support)** </br>
 
 ## Getting started
 
 ### Cargo.toml configuration
+
 To use the latest version of `RFHE-rs` in your project, you first need to add it as a dependency in your `Cargo.toml`:
 
-+ For x86_64-based machines running Unix-like OSes:
+- For x86\_64-based machines running Unix-like OSes:
 
 ```toml
 rfhe = { version = "*", features = ["boolean", "shortint", "integer", "x86_64-unix"] }
 ```
 
-+ For Apple Silicon or aarch64-based machines running Unix-like OSes:
+- For Apple Silicon or aarch64-based machines running Unix-like OSes:
 
 ```toml
 rfhe = { version = "*", features = ["boolean", "shortint", "integer", "aarch64-unix"] }
 ```
 
-+ For x86_64-based machines with the [`rdseed instruction`](https://en.wikipedia.org/wiki/RDRAND) running Windows:
+- For x86\_64-based machines with the [`rdseed instruction`](https://en.wikipedia.org/wiki/RDRAND) running Windows:
 
 ```toml
 rfhe = { version = "*", features = ["boolean", "shortint", "integer", "x86_64"] }
 ```
 
-> [!Note]
+> \[!Note]
 > Note: You need to use a Rust version >= 1.73 to compile RFHE-rs.
 
-> [!Note]
+> \[!Note]
 > Note: aarch64-based machines are not yet supported for Windows as it's currently missing an entropy source to be able to seed the [CSPRNGs](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator) used in RFHE-rs.
 
 <p align="right">
@@ -102,7 +97,7 @@ rfhe = { version = "*", features = ["boolean", "shortint", "integer", "x86_64"] 
 
 Here is a full example:
 
-``` rust
+```rust
 use rfhe::prelude::*;
 use rfhe::{generate_keys, set_server_key, ConfigBuilder, FheUint32, FheUint8};
 
@@ -152,47 +147,47 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-To run this code, use the following command: 
+To run this code, use the following command:
+
 <p align="center"> <code> cargo run --release </code> </p>
 
-> [!Note]
+> \[!Note]
 > Note that when running code that uses `RFHE-rs`, it is highly recommended
-to run in release mode with cargo's `--release` flag to have the best performances possible.
+> to run in release mode with cargo's `--release` flag to have the best performances possible.
 
-*Find an example with more explanations in [this part of the documentation](https://docs.initverse.org/rfhe-rs/getting-started/quick_start)*
+*Find an example with more explanations in* *[this part of the documentation](https://docs.initverse.org/rfhe-rs/getting-started/quick_start)*
 
 <p align="right">
   <a href="#about" > ↑ Back to top </a> 
 </p>
 
-
-
-## Resources 
+## Resources
 
 ### RFHE deep dive
+
 - [RFHE Deep Dive - Part I - Ciphertext types](https://www.initverse.org/post/rfhe-deep-dive-part-1)
 - [RFHE Deep Dive - Part II - Encodings and linear leveled operations](https://www.initverse.org/post/rfhe-deep-dive-part-2)
 - [RFHE Deep Dive - Part III - Key switching and leveled multiplications](https://www.initverse.org/post/rfhe-deep-dive-part-3)
-- [RFHE Deep Dive - Part IV - Programmable Bootstrapping](https://www.initverse.org/post/rfhe-deep-dive-part-4)
-<br></br>
+- [RFHE Deep Dive - Part IV - Programmable Bootstrapping](https://www.initverse.org/post/rfhe-deep-dive-part-4) </br>
 
 ### Tutorials
-- [[Video tutorial] Implement signed integers using RFHE-rs ](https://www.initverse.org/post/video-tutorial-implement-signed-integers-ssing-rfhe-rs)
+
+- [\[Video tutorial\] Implement signed integers using RFHE-rs](https://www.initverse.org/post/video-tutorial-implement-signed-integers-ssing-rfhe-rs)&#x20;
 - [Homomorphic parity bit](https://docs.initverse.org/rfhe-rs/tutorials/parity_bit)
 - [Homomorphic case changing on Ascii string](https://docs.initverse.org/rfhe-rs/tutorials/ascii_fhe_string)
 - [Boolean SHA256 with RFHE-rs](https://www.initverse.org/post/boolean-sha256-rfhe-rs)
 - [Dark market with RFHE-rs](https://www.initverse.org/post/dark-market-rfhe-rs)
 - [Regular expression engine with RFHE-rs](https://www.initverse.org/post/regex-engine-rfhe-rs)
 
-*Explore more useful resources in [RFHE-rs tutorials](https://docs.initverse.org/rfhe-rs/tutorials) and [Awesome Initverse repo](https://github.com/Project-InitVerse/awesome-initverse)*
-<br></br>
+*Explore more useful resources in* *[RFHE-rs tutorials](https://docs.initverse.org/rfhe-rs/tutorials)* *and* *[Awesome Initverse repo](https://github.com/Project-InitVerse/awesome-initverse)* </br>
+
 ### Documentation
 
-Full, comprehensive documentation is available here: [https://docs.initverse.org/rfhe-rs](https://docs.initverse.org/rfhe-rs).
+Full, comprehensive documentation is available here: <https://docs.initverse.org/rfhe-rs>.
+
 <p align="right">
   <a href="#about" > ↑ Back to top </a> 
 </p>
-
 
 ## Working with RFHE-rs
 
@@ -208,17 +203,17 @@ When a new update is published in the Lattice Estimator, we update parameters ac
 
 ### Security model
 
-The default parameters for the RFHE-rs library are chosen considering the IND-CPA security model, and are selected with a bootstrapping failure probability fixed at p_error = $2^{-64}$. In particular, it is assumed that the results of decrypted computations are not shared by the secret key owner with any third parties, as such an action can lead to leakage of the secret encryption key. If you are designing an application where decryptions must be shared, you will need to craft custom encryption parameters which are chosen in consideration of the IND-CPA^D security model [1]. 
+The default parameters for the RFHE-rs library are chosen considering the IND-CPA security model, and are selected with a bootstrapping failure probability fixed at p\_error = $2^{-64}$. In particular, it is assumed that the results of decrypted computations are not shared by the secret key owner with any third parties, as such an action can lead to leakage of the secret encryption key. If you are designing an application where decryptions must be shared, you will need to craft custom encryption parameters which are chosen in consideration of the IND-CPA^D security model \[1].
 
-[1] Li, Baiyu, et al. "Securing approximate homomorphic encryption using differential privacy." Annual International Cryptology Conference. Cham: Springer Nature Switzerland, 2022. https://eprint.iacr.org/2022/816.pdf
+\[1] Li, Baiyu, et al. "Securing approximate homomorphic encryption using differential privacy." Annual International Cryptology Conference. Cham: Springer Nature Switzerland, 2022. <https://eprint.iacr.org/2022/816.pdf>
 
 #### Side-channel attacks
 
 Mitigation for side-channel attacks has not yet been implemented in RFHE-rs,
-and will be released in upcoming versions.
-<br></br>
+and will be released in upcoming versions. </br>
 
 ### Citations
+
 To cite RFHE-rs in academic papers, please use the following entry:
 
 ```text
@@ -235,45 +230,45 @@ To cite RFHE-rs in academic papers, please use the following entry:
 There are two ways to contribute to RFHE-rs:
 
 - [Open issues](https://github.com/Project-InitVerse/rfhe-rs/issues/new/choose) to report bugs and typos, or to suggest new ideas
-- Request to become an official contributor by emailing [hello@initverse.org](mailto:hello@initverse.org).
+- Request to become an official contributor by emailing <hello@initverse.org>.
 
-Becoming an approved contributor involves signing our Contributor License Agreement (CLA). Only approved contributors can send pull requests, so please make sure to get in touch before you do!
-<br></br>
+Becoming an approved contributor involves signing our Contributor License Agreement (CLA). Only approved contributors can send pull requests, so please make sure to get in touch before you do! </br>
 
 ### License
+
 This software is distributed under the **BSD-3-Clause-Clear** license. Read [this](LICENSE) for more details.
 
 #### FAQ
+
 **Is Initverse’s technology free to use?**
->Initverse’s libraries are free to use under the BSD 3-Clause Clear license only for development, research, prototyping, and experimentation purposes. However, for any commercial use of Initverse's open source code, companies must purchase Initverse’s commercial patent license.
+
+> Initverse’s libraries are free to use under the BSD 3-Clause Clear license only for development, research, prototyping, and experimentation purposes. However, for any commercial use of Initverse's open source code, companies must purchase Initverse’s commercial patent license.
 >
->Everything we do is open source and we are very transparent on what it means for our users, you can read more about how we monetize our open source products at Initverse in [this blogpost](https://www.initverse.org/post/open-source).
+> Everything we do is open source and we are very transparent on what it means for our users, you can read more about how we monetize our open source products at Initverse in [this blogpost](https://www.initverse.org/post/open-source).
 
 **What do I need to do if I want to use Initverse’s technology for commercial purposes?**
->To commercially use Initverse’s technology you need to be granted Initverse’s patent license. Please contact us hello@initverse.org for more information.
+
+> To commercially use Initverse’s technology you need to be granted Initverse’s patent license. Please contact us <hello@initverse.org> for more information.
 
 **Do you file IP on your technology?**
->Yes, all Initverse’s technologies are patented.
+
+> Yes, all Initverse’s technologies are patented.
 
 **Can you customize a solution for my specific use case?**
->We are open to collaborating and advancing the FHE space with our partners. If you have specific needs, please email us at hello@initverse.org.
+
+> We are open to collaborating and advancing the FHE space with our partners. If you have specific needs, please email us at <hello@initverse.org>.
 
 <p align="right">
   <a href="#about" > ↑ Back to top </a> 
 </p>
 
-
 ## Support
 
 <a target="_blank" href="https://community.initverse.org">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Project-InitVerse/rfhe-rs/assets/157474013/08656d0a-3f44-4126-b8b6-8c601dff5380">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/Project-InitVerse/rfhe-rs/assets/157474013/1c9c9308-50ac-4aab-a4b9-469bb8c536a4">
-  <img alt="Support">
-</picture>
+<img src="https://github.githubassets.com/images/icons/emoji/unicode/2709.png" alt="Support" width="100">
 </a>
 
-🌟 If you find this project helpful or interesting, please consider giving it a star on GitHub! Your support helps to grow the community and motivates further development. 
+🌟 If you find this project helpful or interesting, please consider giving it a star on GitHub! Your support helps to grow the community and motivates further development.
 
 <p align="right">
   <a href="#about" > ↑ Back to top </a> 
