@@ -1,0 +1,20 @@
+[package]
+name = "rfhe-versionable-derive"
+version = "0.2.1"
+edition = "2021"
+keywords = ["versioning", "serialization", "encoding", "proc-macro", "derive"]
+homepage = "https://initverse.org/"
+documentation = "https://docs.rs/rfhe_versionable_derive"
+repository = "https://github.com/Project-InitVerse/rfhe-rs"
+license = "BSD-3-Clause-Clear"
+description = "rfhe-versionable-derive: A set of proc macro for easier implementation of the rfhe-versionable traits"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "2.0", features = ["full"] }
+quote = "1.0"
+proc-macro2 = "1.0"

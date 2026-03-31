@@ -1,0 +1,16 @@
+[package]
+name = "rfhe-cuda-backend"
+version = "0.4.0-alpha.0"
+edition = "2021"
+authors = ["Initverse team"]
+license = "BSD-3-Clause-Clear"
+description = "Cuda implementation of RFHE-rs primitives."
+homepage = "https://www.initverse.org/"
+documentation = "https://docs.initverse.org/rfhe-rs"
+repository = "https://github.com/Project-InitVerse/rfhe-rs"
+readme = "README.md"
+keywords = ["fully", "homomorphic", "encryption", "fhe", "cryptography"]
+
+[build-dependencies]
+cmake = { version = "0.1" }
+pkg-config = { version = "0.3" }

@@ -1,0 +1,35 @@
+[workspace]
+resolver = "2"
+members = [
+    "rfhe",
+    "rfhe-zk-pok",
+    "tasks",
+    "apps/trivium",
+    "concrete-csprng",
+    "backends/rfhe-cuda-backend",
+    "utils/rfhe-versionable",
+    "utils/rfhe-versionable-derive",
+]
+
+exclude = [
+    "rfhe/backward_compatibility_tests",
+    "utils/cargo-rfhe-lints-inner",
+    "utils/cargo-rfhe-lints"
+]
+
+[profile.bench]
+lto = "fat"
+
+[profile.release]
+lto = "fat"
+
+[profile.release_lto_off]
+inherits = "release"
+lto = "off"
+
+# Compiles much faster for tests and allows reasonable performance for iterating
+[profile.devo]
+inherits = "dev"
+opt-level = 3
+lto = "off"
+debug-assertions = false
